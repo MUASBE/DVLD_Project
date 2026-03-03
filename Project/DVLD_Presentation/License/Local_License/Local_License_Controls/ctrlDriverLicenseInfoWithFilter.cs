@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DVLD_Business;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -31,9 +32,16 @@ namespace DVLD_Presentation.License.Local_License.Local_License_Controls
         public int LicenseID
         {
             get
-            { return _LicenseID; }
+            { return ctrlDriverLicenseInfo1.LicenseInfo.LicenseID; }
             set 
             { _LicenseID = value; }
+        }
+        public clcLicenseBusiness LicenseInfo
+        {
+            get
+            {
+                return ctrlDriverLicenseInfo1.LicenseInfo;
+            }
         }
         public bool EnableBtnFind
         {
@@ -57,9 +65,13 @@ namespace DVLD_Presentation.License.Local_License.Local_License_Controls
                 gbFilters.Enabled = value;
             }
         }
+        public void FoucestxtLicense()
+        {
+            txtLicenseID.Focus();
+        }
         private void _FindNow()
         {
-            if (int.TryParse(txtLicenseID.Text, out _LicenseID))
+            if (int.TryParse(txtLicenseID.Text.Trim(), out _LicenseID))
             {
                 ctrlDriverLicenseInfo1.LoadInfo(_LicenseID);
 
@@ -108,6 +120,14 @@ namespace DVLD_Presentation.License.Local_License.Local_License_Controls
             }
 
             _FindNow();
+        }
+
+        private void txtLicenseID_TextChanged(object sender, EventArgs e)
+        {
+            if (txtLicenseID.Text.Contains("\n"))
+            {
+                txtLicenseID.Text = txtLicenseID.Text.Substring(0, txtLicenseID.Text.Length - 2);
+            }
         }
     }
 }

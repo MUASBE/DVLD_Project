@@ -30,22 +30,15 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ctrlDriverLicenseInfoWithFilter));
-            this.ctrlDriverLicenseInfo1 = new DVLD_Presentation.License.Local_License.Local_License_Controls.ctrlDriverLicenseInfo();
             this.gbFilters = new System.Windows.Forms.GroupBox();
             this.btnFind = new System.Windows.Forms.Button();
             this.txtLicenseID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ctrlDriverLicenseInfo1 = new DVLD_Presentation.License.Local_License.Local_License_Controls.ctrlDriverLicenseInfo();
             this.gbFilters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // ctrlDriverLicenseInfo1
-            // 
-            this.ctrlDriverLicenseInfo1.Location = new System.Drawing.Point(14, 97);
-            this.ctrlDriverLicenseInfo1.Name = "ctrlDriverLicenseInfo1";
-            this.ctrlDriverLicenseInfo1.Size = new System.Drawing.Size(1024, 394);
-            this.ctrlDriverLicenseInfo1.TabIndex = 0;
             // 
             // gbFilters
             // 
@@ -79,6 +72,7 @@
             this.txtLicenseID.Name = "txtLicenseID";
             this.txtLicenseID.Size = new System.Drawing.Size(214, 20);
             this.txtLicenseID.TabIndex = 0;
+            this.txtLicenseID.TextChanged += new System.EventHandler(this.txtLicenseID_TextChanged);
             this.txtLicenseID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLicenseID_KeyPress);
             this.txtLicenseID.Validating += new System.ComponentModel.CancelEventHandler(this.txtLicenseID_Validating);
             // 
@@ -95,6 +89,13 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
+            // 
+            // ctrlDriverLicenseInfo1
+            // 
+            this.ctrlDriverLicenseInfo1.Location = new System.Drawing.Point(14, 97);
+            this.ctrlDriverLicenseInfo1.Name = "ctrlDriverLicenseInfo1";
+            this.ctrlDriverLicenseInfo1.Size = new System.Drawing.Size(1024, 394);
+            this.ctrlDriverLicenseInfo1.TabIndex = 0;
             // 
             // ctrlDriverLicenseInfoWithFilter
             // 
