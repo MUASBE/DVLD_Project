@@ -12,11 +12,11 @@ namespace DVLD_Presentation.License.Local_License
 {
     public partial class ShowLicenseInfo : Form
     {
-        private int _ApplicationID;
-        public ShowLicenseInfo(int ApplicationID)
+        private int _LicenseID;
+        public ShowLicenseInfo(int licenseID)
         {
             InitializeComponent();
-            _ApplicationID = ApplicationID;
+            _LicenseID = licenseID;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -26,7 +26,7 @@ namespace DVLD_Presentation.License.Local_License
 
         private void ShowLicenseInfo_Load(object sender, EventArgs e)
         {
-            ctrlDriverLicenseInfo1.LoadLicenseInfoByApplicationID(_ApplicationID);
+            ctrlDriverLicenseInfo1.LoadInfo(_LicenseID);
             if(ctrlDriverLicenseInfo1.LicenseInfo == null)
             {
                 MessageBox.Show("License was not found, please try again leter", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);

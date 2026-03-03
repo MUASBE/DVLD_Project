@@ -359,10 +359,23 @@ namespace DVLD_Presentation
         private void showLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LDLApplicationInfo = clcLDLApplicationBusiness.Find((int)DGVLDLApplication.CurrentRow.Cells[0].Value);
-            ShowLicenseInfo frm = new ShowLicenseInfo(LDLApplicationInfo.ApplicationID);
-            frm.ShowDialog();
-            _ReshreshLDLApplications();
-            LDLApplicationInfo = null;
+
+            int LicenseID = clcLicenseBusiness.GetLicenseByPersonID(LDLApplicationInfo.ApplicationInfo.ApplicantPersonID,
+                LDLApplicationInfo.LicenseInfo.LicenseID);
+
+            if(LicenseID != 0)
+            {
+                ShowLicenseInfo frm = new ShowLicenseInfo(LicenseID);
+                frm.ShowDialog();
+                _ReshreshLDLApplications();
+                LDLApplicationInfo = null;
+            }
+            else
+            {
+                MessageBox.Show("No License Found!", "No License", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            
         }
     }
 }

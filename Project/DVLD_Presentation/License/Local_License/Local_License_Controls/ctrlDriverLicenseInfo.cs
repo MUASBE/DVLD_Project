@@ -14,7 +14,12 @@ namespace DVLD_Presentation.License.Local_License.Local_License_Controls
 {
     public partial class ctrlDriverLicenseInfo : UserControl
     {
-        public clcLicenseBusiness LicenseInfo { get; set; }       
+        private int _LicenseID = 0;
+        private clcLicenseBusiness _LicenseInfo;
+        public clcLicenseBusiness LicenseInfo
+        {
+            get { return _LicenseInfo; }
+        }
         public ctrlDriverLicenseInfo()
         {
             InitializeComponent();
@@ -22,20 +27,26 @@ namespace DVLD_Presentation.License.Local_License.Local_License_Controls
 
         public void LoadLicenseInfoByApplicationID(int ApplicationID)
         {
-            LicenseInfo = clcLicenseBusiness.FindByApplicationID(ApplicationID);
+           _LicenseInfo = clcLicenseBusiness.FindByApplicationID(ApplicationID);
 
-            if(LicenseInfo != null )
+            if (_LicenseInfo == null)
             {
-                lblClass.Text = LicenseInfo.LicenseClassesInfo.LicenseName;
-                lblFullName.Text = LicenseInfo.ApplicationInfo.ApplicantPersonInfo.FirstName + " "
-                     + LicenseInfo.ApplicationInfo.ApplicantPersonInfo.SecondName + " "
-                     + LicenseInfo.ApplicationInfo.ApplicantPersonInfo.ThirdName + " "
-                     + LicenseInfo.ApplicationInfo.ApplicantPersonInfo.LastName;
+                MessageBox.Show("Could not find License ID = " + _LicenseID.ToString(),
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _LicenseID = -1;
+                return;
+            }
 
-                lblLicenseID.Text = LicenseInfo.LicenseID.ToString();
-                lblNationalNo.Text = LicenseInfo.ApplicationInfo.ApplicantPersonInfo.NationalNo;
-                
-                switch(LicenseInfo.ApplicationInfo.ApplicantPersonInfo.Gendor)
+            lblClass.Text = _LicenseInfo.LicenseClassesInfo.LicenseName;
+                lblFullName.Text = _LicenseInfo.ApplicationInfo.ApplicantPersonInfo.FirstName + " "
+                     + _LicenseInfo.ApplicationInfo.ApplicantPersonInfo.SecondName + " "
+                     + _LicenseInfo.ApplicationInfo.ApplicantPersonInfo.ThirdName + " "
+                     + _LicenseInfo.ApplicationInfo.ApplicantPersonInfo.LastName;
+
+            lblLicenseID.Text = _LicenseInfo.LicenseID.ToString();
+            lblNationalNo.Text = _LicenseInfo.ApplicationInfo.ApplicantPersonInfo.NationalNo;
+            
+            switch(_LicenseInfo.ApplicationInfo.ApplicantPersonInfo.Gendor)
                 {
                     case 0:
                         {
@@ -53,28 +64,86 @@ namespace DVLD_Presentation.License.Local_License.Local_License_Controls
                         }
                 }
 
-                if(LicenseInfo.ApplicationInfo.ApplicantPersonInfo.imagePath != "")
-                {
-                    pbPersonImage.ImageLocation = LicenseInfo.ApplicationInfo.ApplicantPersonInfo.imagePath;
-                }
-
-                lblIssueDate.Text = LicenseInfo.IssueDate.ToShortDateString();
-                lblIssueReason.Text = LicenseInfo.IssueReasonText;
-
-                if(LicenseInfo.Notes != "")
-                {
-                    lblNotes.Text = LicenseInfo.Notes.ToString();
-                }
-                else
-                {
-                    lblNotes.Text = "No Notes";
-                }
-
-                lblIsActive.Text = (LicenseInfo.IsActive) ? "Yes" : "No";
-                lblDateOfBirth.Text = LicenseInfo.ApplicationInfo.ApplicantPersonInfo.DateOfBirth.ToShortDateString();
-                lblDriverID.Text = LicenseInfo.DriverID.ToString();
-                lblExpirationDate.Text = LicenseInfo.ExpirationDate.ToShortDateString();
+            if(_LicenseInfo.ApplicationInfo.ApplicantPersonInfo.imagePath != "")
+            {
+                pbPersonImage.ImageLocation = _LicenseInfo.ApplicationInfo.ApplicantPersonInfo.imagePath;
             }
+
+            lblIssueDate.Text = _LicenseInfo.IssueDate.ToShortDateString();
+            lblIssueReason.Text = _LicenseInfo.IssueReasonText;
+
+            if(_LicenseInfo.Notes != "")
+            {
+                lblNotes.Text = _LicenseInfo.Notes.ToString();
+            }
+            else
+            {
+                lblNotes.Text = "No Notes";
+            }
+
+            lblIsActive.Text = (_LicenseInfo.IsActive) ? "Yes" : "No";
+            lblDateOfBirth.Text = _LicenseInfo.ApplicationInfo.ApplicantPersonInfo.DateOfBirth.ToShortDateString();
+            lblDriverID.Text = _LicenseInfo.DriverID.ToString();
+            lblExpirationDate.Text = LicenseInfo.ExpirationDate.ToShortDateString();
+            
+        }
+
+        public void LoadInfo(int LicenseID)
+        {
+            _LicenseID = LicenseID;
+            _LicenseInfo = clcLicenseBusiness.Find(_LicenseID);
+            if (_LicenseInfo == null)
+            {
+                MessageBox.Show("Could not find License ID = " + _LicenseID.ToString(),
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _LicenseID = -1;
+                return;
+            }
+
+            lblLicenseID.Text = _LicenseInfo.LicenseID.ToString();
+            lblIsActive.Text = _LicenseInfo.IsActive ? "Yes" : "No";
+            //lblIsDetained.Text = _LicenseInfo.IsDetained ? "Yes" : "No";
+            lblClass.Text = _LicenseInfo.LicenseClassesInfo.LicenseName;
+            lblFullName.Text = _LicenseInfo.ApplicationInfo.ApplicantPersonInfo.FirstName + " "
+                     + _LicenseInfo.ApplicationInfo.ApplicantPersonInfo.SecondName + " "
+                     + _LicenseInfo.ApplicationInfo.ApplicantPersonInfo.ThirdName + " "
+                     + _LicenseInfo.ApplicationInfo.ApplicantPersonInfo.LastName; 
+
+            lblNationalNo.Text = _LicenseInfo.DriverInfo.PersonInfo.NationalNo;
+            switch (_LicenseInfo.ApplicationInfo.ApplicantPersonInfo.Gendor)
+            {
+                case 0:
+                    {
+                        lblGendor.Text = "Male";
+                        pbGendor.Image = Resources.Male_512;
+                        pbPersonImage.Image = Resources.Male_512;
+                        break;
+                    }
+                case 1:
+                    {
+                        pbGendor.Image = Resources.Female_512;
+                        pbPersonImage.Image = Resources.Female_512;
+                        lblGendor.Text = "Female";
+                        break;
+                    }
+            }
+
+            if (_LicenseInfo.ApplicationInfo.ApplicantPersonInfo.imagePath != "")
+            {
+                pbPersonImage.ImageLocation = _LicenseInfo.ApplicationInfo.ApplicantPersonInfo.imagePath;
+            }
+
+            lblDateOfBirth.Text = _LicenseInfo.DriverInfo.PersonInfo.DateOfBirth.ToLongDateString();
+
+            lblDriverID.Text = _LicenseInfo.DriverID.ToString();
+            lblIssueDate.Text = _LicenseInfo.IssueDate.ToLongDateString();
+            lblExpirationDate.Text = _LicenseInfo.ExpirationDate.ToLongDateString();
+            lblIssueReason.Text = _LicenseInfo.IssueReasonText;
+            lblNotes.Text = _LicenseInfo.Notes == "" ? "No Notes" : _LicenseInfo.Notes;
+
+
+
+
         }
     }
 }
