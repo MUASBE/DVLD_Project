@@ -122,7 +122,7 @@ namespace DVLD_Business
         {
             int LicenseID = 0, DriverID = 0, IssueReason = 0, CreatedByUserID = 0, LicenseClassID = 0;
             DateTime IssueDate = DateTime.Now, ExpirationDate = DateTime.Now;
-            string Notes = "";
+            string Notes = string.Empty;
             float PaidFees = 0;
             bool IsActive = false;
 
