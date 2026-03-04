@@ -172,5 +172,70 @@ namespace DVLD_Business
                     return "First Time";
             }
         }
+
+        public bool DeactivateLicense()
+        {
+            return clcLicenseData.DeactivateLicense(this.LicenseID);
+        }
+        public bool isLicenseExpirated()
+        {
+            return this.ExpirationDate < DateTime.Now;
+        }
+
+        public clcLicenseBusiness RenewLicense(string notes, int CreatedUserID)
+        {
+
+            if(!(this.IsActive && this.isLicenseExpirated()))
+                return null;
+
+            clcApplicationBusiness _RenewApplicationInfo = new clcApplicationBusiness();
+            _RenewApplicationInfo.ApplicationDate = DateTime.Now;
+            _RenewApplicationInfo.LastStatusDate = DateTime.Now;
+            _RenewApplicationInfo.GreatedUserID = CreatedUserID;
+            _RenewApplicationInfo.GreatedUserInfo = clcUsersBusiness.FindByUserID(CreatedUserID);
+            _RenewApplicationInfo.ApplicantPersonID = this.ApplicationInfo.ApplicantPersonID;
+            _RenewApplicationInfo.ApplicantPersonInfo = clcPersonBusiness.Find(_RenewApplicationInfo.ApplicantPersonID);
+            _RenewApplicationInfo.ApplicationStatus = clcApplicationBusiness._enStatus.New;
+
+            _RenewApplicationInfo.ApplicationTypeID = (int)clcApplicationBusiness.enApplicationType.RenewDrivingLicense;
+            _RenewApplicationInfo.ApplicationTypeInfo = clcApplicationTypesBusiness.Find(_RenewApplicationInfo.ApplicationTypeID);
+            _RenewApplicationInfo.PaidFees = _RenewApplicationInfo.ApplicationTypeInfo.ApplicatinTypeFees;
+
+            if(!_RenewApplicationInfo.Save())
+                return null;
+
+            clcLicenseBusiness NewLicesne = new clcLicenseBusiness();
+
+            NewLicesne.ApplicationID = _RenewApplicationInfo.ApplicationID;
+            NewLicesne.ApplicationInfo = clcApplicationBusiness.Find(NewLicesne.ApplicationID);
+
+            NewLicesne.DriverID = this.DriverInfo.DriverID;
+            NewLicesne.DriverInfo = clcDriverBusiness.FindByDriverID(NewLicesne.DriverID);
+
+            NewLicesne.LicenseClassID = this.LicenseClassesInfo.LicenseID;
+            NewLicesne.LicenseClassesInfo = clcLicenseClassesBusiness.Find(NewLicesne.LicenseClassID);
+
+            NewLicesne.IssueDate = DateTime.Now;
+            NewLicesne.ExpirationDate = DateTime.Now.AddYears(NewLicesne.LicenseClassesInfo.DefaultValidityLength);
+            NewLicesne.PaidFees = NewLicesne.LicenseClassesInfo.ClassFees;
+
+            NewLicesne.Notes = notes;
+            NewLicesne.IsActive = true;
+            NewLicesne.IssueReason = clcLicenseBusiness.enIssueReason.Renew;
+
+            NewLicesne.CreatedByUserID = CreatedUserID;
+            NewLicesne.CreatedByUserInfo = clcUsersBusiness.FindByUserID(NewLicesne.CreatedByUserID);
+
+            if (!DeactivateLicense())
+                return null;
+
+            if(!NewLicesne.AddNewLicense())
+                return null;
+
+            _RenewApplicationInfo.CompleteApplication();
+
+            return NewLicesne;
+        }
+
     }
 }

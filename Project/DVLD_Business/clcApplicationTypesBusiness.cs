@@ -49,6 +49,9 @@ namespace DVLD_Business
             return clcApplicationTypesData.UpdateApplicationType(this.ApplicationTypeID, this.ApplicationTypeName, this.ApplicatinTypeFees);
         }
 
-
+        public static float GetApplicationTypeFees(int ApplicationTypeID)
+        {
+            return clcApplicationTypesData.GetApplicationTypeFees(ApplicationTypeID);
+        }
     }
 }

@@ -128,13 +128,15 @@ namespace DVLD_DataAccess
                 values
                 (@ApplicationID, @DriverID, @LicenseClass, @IssueDate, @ExpirationDate
                     , @Notes, @PaidFees, @IsActive, @IssueReason, @CreatedByUserID)
-
                         update Applications 
                         set 
                         ApplicationStatus = 3,
                         LastStatusDate = GETDATE() 
                         where ApplicationID = @ApplicationID
                         SELECT SCOPE_IDENTITY()";
+
+            //if(!clcApplicationData.UpdateStatus(ApplicationID, 3))
+            //    return NewLicenseID;
 
             SqlCommand command = new SqlCommand(Query, connection);
             command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
@@ -159,11 +161,15 @@ namespace DVLD_DataAccess
             try
             {
                 connection.Open();
-                object result = command.ExecuteNonQuery();
+                object result = command.ExecuteScalar();
                 if (result != null && int.TryParse(result.ToString(), out int ID))
                 {
                     NewLicenseID = ID;
                 }
+                //else
+                //{
+                //    clcApplicationData.UpdateStatus(ApplicationID, 1);
+                //}
             }
             catch (Exception ex)
             {
@@ -212,6 +218,43 @@ namespace DVLD_DataAccess
             }
             finally { connection.Close(); }
             return LicenseID;
+        }
+
+        public static bool DeactivateLicense(int LicenseID)
+        {
+
+            int rowsAffected = 0;
+            SqlConnection connection = new SqlConnection(clcSetting.connectionString);
+
+            string query = @"UPDATE Licenses
+                           SET 
+                              IsActive = 0
+                             
+                         WHERE LicenseID=@LicenseID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@LicenseID", LicenseID);
+
+
+            try
+            {
+                connection.Open();
+                rowsAffected = command.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine("Error: " + ex.Message);
+                return false;
+            }
+
+            finally
+            {
+                connection.Close();
+            }
+
+            return (rowsAffected > 0);
         }
     }
 }

@@ -24,7 +24,27 @@ namespace DVLD_Presentation.License.Local_License.Local_License_Controls
         {
             InitializeComponent();
         }
+        private void _ResetDefaultView()
+        {
+            lblClass.Text = "????";
+            lblFullName.Text = "????";
 
+            lblLicenseID.Text = "????";
+            lblNationalNo.Text = "????";
+            lblGendor.Text = "????";
+            pbGendor.Image = Resources.Male_512;
+            pbPersonImage.Image = Resources.Male_512;
+
+            lblIssueDate.Text = "????";
+            lblIssueReason.Text = "????";
+
+            lblNotes.Text = "????";
+
+            lblIsActive.Text = "????";
+            lblDateOfBirth.Text = "????";
+            lblDriverID.Text = "????";
+            lblExpirationDate.Text = "????";
+        }
         public void LoadLicenseInfoByApplicationID(int ApplicationID)
         {
            _LicenseInfo = clcLicenseBusiness.FindByApplicationID(ApplicationID);
@@ -34,6 +54,7 @@ namespace DVLD_Presentation.License.Local_License.Local_License_Controls
                 MessageBox.Show("Could not find License ID = " + _LicenseID.ToString(),
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 _LicenseID = -1;
+                _ResetDefaultView();
                 return;
             }
 
@@ -97,6 +118,7 @@ namespace DVLD_Presentation.License.Local_License.Local_License_Controls
                 MessageBox.Show("Could not find License ID = " + _LicenseID.ToString(),
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 _LicenseID = -1;
+                _ResetDefaultView();
                 return;
             }
 

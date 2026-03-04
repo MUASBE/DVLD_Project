@@ -98,5 +98,30 @@ namespace DVLD_DataAccess
             return (EffectedRows > 0);
         }
 
+        public static float GetApplicationTypeFees(int ApplicationTypeID)
+        {
+            float Fees = 0;
+
+            SqlConnection connection = new SqlConnection(clcSetting.connectionString);
+            string Query = @"select ApplicationFees from ApplicationTypes where ApplicationTypeID = @ApplicationTypeID";
+            SqlCommand command = new SqlCommand(Query, connection);
+            command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
+
+            try
+            {
+                connection.Open();
+                object res = command.ExecuteScalar();
+                if(res != null) 
+                    Fees = Convert.ToSingle(res.ToString());
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally { connection.Close(); }
+
+            return Fees;
+        }
     }
 }

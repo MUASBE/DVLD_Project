@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Applications\Renew_LDL\RenewLDL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\Renew_LDL\RenewLDL.Designer.cs">
+      <DependentUpon>RenewLDL.cs</DependentUpon>
+    </Compile>
     <Compile Include="License\Local_License\IssueLicenseFirstTime.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -237,6 +243,9 @@
       <DependentUpon>ShowPersonInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="GlobalClasses\clcValidating.cs" />
+    <EmbeddedResource Include="Applications\Renew_LDL\RenewLDL.resx">
+      <DependentUpon>RenewLDL.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="License\Local_License\IssueLicenseFirstTime.resx">
       <DependentUpon>IssueLicenseFirstTime.cs</DependentUpon>
     </EmbeddedResource>

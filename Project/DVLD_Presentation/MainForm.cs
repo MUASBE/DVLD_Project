@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLD_Business;
+using DVLD_Presentation.Applications.Renew_LDL;
 
 namespace DVLD_Presentation
 {
@@ -68,6 +69,19 @@ namespace DVLD_Presentation
         {
             LDLApplicationList frmLDLApplicationList = new LDLApplicationList();
             frmLDLApplicationList.ShowDialog();
+        }
+
+        private void renewDrivingLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RenewLDL frm = new RenewLDL();
+            frm.ShowDialog();
+
+        }
+
+        private void localDrivingLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddEditLDLApplication frm = new AddEditLDLApplication();
+            frm.ShowDialog();
         }
     }
 }
