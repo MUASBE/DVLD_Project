@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using DVLD_Business;
 using DVLD_Presentation.Applications;
 using DVLD_Presentation.Applications.Renew_LDL;
+using DVLD_Presentation.Drivers;
 
 namespace DVLD_Presentation
 {
@@ -88,6 +89,12 @@ namespace DVLD_Presentation
         private void replaceToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ReplaceLostOrDamagedLicense frm = new ReplaceLostOrDamagedLicense();
+            frm.ShowDialog();
+        }
+
+        private void StripMenuDrivers_Click(object sender, EventArgs e)
+        {
+            DriverList frm = new DriverList();
             frm.ShowDialog();
         }
     }

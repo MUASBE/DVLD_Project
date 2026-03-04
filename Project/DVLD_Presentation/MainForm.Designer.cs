@@ -212,6 +212,7 @@
             this.StripMenuDrivers.Name = "StripMenuDrivers";
             this.StripMenuDrivers.Size = new System.Drawing.Size(385, 84);
             this.StripMenuDrivers.Text = "Drivers";
+            this.StripMenuDrivers.Click += new System.EventHandler(this.StripMenuDrivers_Click);
             // 
             // StripMenuUsers
             // 

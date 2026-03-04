@@ -58,6 +58,12 @@
     <Compile Include="Applications\ReplaceLostOrDamagedLicense\ReplaceLostOrDamagedLicense.Designer.cs">
       <DependentUpon>ReplaceLostOrDamagedLicense.cs</DependentUpon>
     </Compile>
+    <Compile Include="Drivers\DriverList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Drivers\DriverList.Designer.cs">
+      <DependentUpon>DriverList.cs</DependentUpon>
+    </Compile>
     <Compile Include="License\Local_License\IssueLicenseFirstTime.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -254,6 +260,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\ReplaceLostOrDamagedLicense\ReplaceLostOrDamagedLicense.resx">
       <DependentUpon>ReplaceLostOrDamagedLicense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Drivers\DriverList.resx">
+      <DependentUpon>DriverList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="License\Local_License\IssueLicenseFirstTime.resx">
       <DependentUpon>IssueLicenseFirstTime.cs</DependentUpon>

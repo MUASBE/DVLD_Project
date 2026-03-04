@@ -48,7 +48,7 @@ namespace DVLD_Presentation.License.Local_License
 
             int LicenseID = clcLicenseBusiness.GetLicenseByPersonID(_LDLApplicationInfo.ApplicationInfo.ApplicantPersonID,
                 _LDLApplicationInfo.LicenseInfo.LicenseID);
-            if (LicenseID != -1)
+            if (LicenseID > 0)
             {
 
                 MessageBox.Show("Person already has License before with License ID=" + LicenseID.ToString(), "Not Allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
