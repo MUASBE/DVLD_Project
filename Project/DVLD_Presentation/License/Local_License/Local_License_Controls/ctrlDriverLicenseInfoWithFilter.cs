@@ -68,6 +68,11 @@ namespace DVLD_Presentation.License.Local_License.Local_License_Controls
             if (int.TryParse(txtLicenseID.Text.Trim(), out _LicenseID))
             {
                 ctrlDriverLicenseInfo1.LoadInfo(_LicenseID);
+                
+                if(ctrlDriverLicenseInfo1.LicenseInfo != null) 
+                    _LicenseID = ctrlDriverLicenseInfo1.LicenseInfo.LicenseID;
+                else
+                    _LicenseID = 0;
 
                 if (OnLicenseClick != null && EnableFilter)
                 {

@@ -236,6 +236,59 @@ namespace DVLD_Business
 
             return NewLicesne;
         }
+        public clcLicenseBusiness ReplaceLicense(enIssueReason IssueReason, clcApplicationBusiness.enApplicationType ApplicationType,
+            int CreatedUserID)
+        {
+            if (!this.IsActive || this.isLicenseExpirated())
+                return null;
 
+            clcApplicationBusiness ReplaceApplicationInfo = new clcApplicationBusiness();
+            ReplaceApplicationInfo.ApplicationDate = DateTime.Now;
+            ReplaceApplicationInfo.LastStatusDate = DateTime.Now;
+            ReplaceApplicationInfo.GreatedUserID = CreatedUserID;
+            ReplaceApplicationInfo.GreatedUserInfo = clcUsersBusiness.FindByUserID(CreatedUserID);
+            ReplaceApplicationInfo.ApplicantPersonID = this.ApplicationInfo.ApplicantPersonID;
+            ReplaceApplicationInfo.ApplicantPersonInfo = clcPersonBusiness.Find(ReplaceApplicationInfo.ApplicantPersonID);
+            ReplaceApplicationInfo.ApplicationStatus = clcApplicationBusiness._enStatus.New;
+
+            ReplaceApplicationInfo.ApplicationTypeID = (int)ApplicationType;
+            ReplaceApplicationInfo.ApplicationTypeInfo = clcApplicationTypesBusiness.Find(ReplaceApplicationInfo.ApplicationTypeID);
+            ReplaceApplicationInfo.PaidFees = ReplaceApplicationInfo.ApplicationTypeInfo.ApplicatinTypeFees;
+
+            if (!ReplaceApplicationInfo.Save())
+                return null;
+
+            clcLicenseBusiness NewLicesne = new clcLicenseBusiness();
+
+            NewLicesne.ApplicationID = ReplaceApplicationInfo.ApplicationID;
+            NewLicesne.ApplicationInfo = clcApplicationBusiness.Find(NewLicesne.ApplicationID);
+
+            NewLicesne.DriverID = this.DriverInfo.DriverID;
+            NewLicesne.DriverInfo = clcDriverBusiness.FindByDriverID(NewLicesne.DriverID);
+
+            NewLicesne.LicenseClassID = this.LicenseClassesInfo.LicenseID;
+            NewLicesne.LicenseClassesInfo = clcLicenseClassesBusiness.Find(NewLicesne.LicenseClassID);
+
+            NewLicesne.IssueDate = DateTime.Now;
+            NewLicesne.ExpirationDate = this.ExpirationDate;
+            NewLicesne.PaidFees = NewLicesne.LicenseClassesInfo.ClassFees;
+
+            NewLicesne.Notes = this.Notes;
+            NewLicesne.IsActive = true;
+            NewLicesne.IssueReason = IssueReason;
+
+            NewLicesne.CreatedByUserID = CreatedUserID;
+            NewLicesne.CreatedByUserInfo = clcUsersBusiness.FindByUserID(NewLicesne.CreatedByUserID);
+
+            if (!DeactivateLicense())
+                return null;
+
+            if (!NewLicesne.AddNewLicense())
+                return null;
+
+            ReplaceApplicationInfo.CompleteApplication();
+
+            return NewLicesne;
+        }
     }
 }

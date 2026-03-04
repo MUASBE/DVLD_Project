@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLD_Business;
+using DVLD_Presentation.Applications;
 using DVLD_Presentation.Applications.Renew_LDL;
 
 namespace DVLD_Presentation
@@ -81,6 +82,12 @@ namespace DVLD_Presentation
         private void localDrivingLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddEditLDLApplication frm = new AddEditLDLApplication();
+            frm.ShowDialog();
+        }
+
+        private void replaceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReplaceLostOrDamagedLicense frm = new ReplaceLostOrDamagedLicense();
             frm.ShowDialog();
         }
     }
