@@ -165,7 +165,7 @@ namespace DVLD_DataAccess
                 connection.Open();
 
                 SqlDataReader reader = command.ExecuteReader();
-                if(reader.Read())
+                if(reader.HasRows)
                 {
                     DTAllDrivers.Load(reader);
                 }

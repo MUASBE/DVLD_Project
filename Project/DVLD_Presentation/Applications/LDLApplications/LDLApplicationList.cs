@@ -1,4 +1,7 @@
-﻿using System;
+﻿using DVLD_Business;
+using DVLD_Presentation.License;
+using DVLD_Presentation.License.Local_License;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,8 +10,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DVLD_Business;
-using DVLD_Presentation.License.Local_License;
 namespace DVLD_Presentation
 {
     public partial class LDLApplicationList : Form
@@ -376,6 +377,24 @@ namespace DVLD_Presentation
                 return;
             }
             
+        }
+
+        private void showPersonLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LDLApplicationInfo = clcLDLApplicationBusiness.Find((int)DGVLDLApplication.CurrentRow.Cells[0].Value);
+            LicensesHistory frm;
+
+            if (LDLApplicationInfo != null)
+            {
+                 frm = new LicensesHistory(LDLApplicationInfo.ApplicationInfo.ApplicantPersonID);
+                frm.ShowDialog();
+            }
+            else
+            {
+                frm = new LicensesHistory();
+                frm.ShowDialog();
+            }
+                LDLApplicationInfo = null;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.AccessControl;
@@ -289,6 +290,11 @@ namespace DVLD_Business
             ReplaceApplicationInfo.CompleteApplication();
 
             return NewLicesne;
+        }
+
+        public static DataTable GetDriverLicense(int DriverID)
+        {
+            return clcLicenseData.GetDriverLicense(DriverID);
         }
     }
 }

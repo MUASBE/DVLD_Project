@@ -1,4 +1,5 @@
 ﻿using DVLD_Business;
+using DVLD_Presentation.License;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -166,6 +167,14 @@ namespace DVLD_Presentation.Drivers
             {
                 e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
             }
+        }
+
+        private void showPersonLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LicensesHistory frm = new LicensesHistory((int)dgvDrivers.CurrentRow.Cells[1].Value);
+            frm.ShowDialog();
+
+            DriverList_Load(null, null);
         }
     }
 }

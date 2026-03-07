@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -256,5 +257,45 @@ namespace DVLD_DataAccess
 
             return (rowsAffected > 0);
         }
+
+        public static DataTable GetDriverLicense(int DriverID)
+        {
+            DataTable DtDriverLicenses = new DataTable();
+
+            SqlConnection connection = new SqlConnection(clcSetting.connectionString);
+            string Query = @"SELECT     
+                           Licenses.LicenseID,
+                           ApplicationID,
+		                   LicenseClasses.ClassName, Licenses.IssueDate, 
+		                   Licenses.ExpirationDate, Licenses.IsActive
+                           FROM Licenses INNER JOIN
+                                LicenseClasses ON Licenses.LicenseClass = LicenseClasses.LicenseClassID
+                            where Licenses.DriverID = @DriverID
+                            order by Licenses.IsActive desc,Licenses.ExpirationDate desc";
+
+            SqlCommand command = new SqlCommand(Query, connection);
+            command.Parameters.AddWithValue("@DriverID", DriverID);
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if(reader.HasRows)
+                    DtDriverLicenses.Load(reader);
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally 
+                {  connection.Close(); }
+
+
+            return DtDriverLicenses;
+        }
+
     }
 }

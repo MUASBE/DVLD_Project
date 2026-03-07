@@ -64,6 +64,18 @@
     <Compile Include="Drivers\DriverList.Designer.cs">
       <DependentUpon>DriverList.cs</DependentUpon>
     </Compile>
+    <Compile Include="License\LicensesHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="License\LicensesHistory.Designer.cs">
+      <DependentUpon>LicensesHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="License\License_Controls\ctrlDriverLicenses.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="License\License_Controls\ctrlDriverLicenses.Designer.cs">
+      <DependentUpon>ctrlDriverLicenses.cs</DependentUpon>
+    </Compile>
     <Compile Include="License\Local_License\IssueLicenseFirstTime.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -263,6 +275,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Drivers\DriverList.resx">
       <DependentUpon>DriverList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="License\LicensesHistory.resx">
+      <DependentUpon>LicensesHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="License\License_Controls\ctrlDriverLicenses.resx">
+      <DependentUpon>ctrlDriverLicenses.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="License\Local_License\IssueLicenseFirstTime.resx">
       <DependentUpon>IssueLicenseFirstTime.cs</DependentUpon>
