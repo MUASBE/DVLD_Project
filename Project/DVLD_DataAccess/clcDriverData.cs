@@ -151,6 +151,36 @@ namespace DVLD_DataAccess
 
             return NewID;
         }
+        public static int GetPersonIDByDriverID(int DriverID)
+        {
+            int NewID = 0;
+
+            SqlConnection connection = new SqlConnection(clcSetting.connectionString);
+            string Query = @"select PersonID from Drivers where DriverID = @DriverID";
+
+            SqlCommand command = new SqlCommand(Query, connection);
+            command.Parameters.AddWithValue("@DriverID", DriverID);
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null && int.TryParse(result.ToString(), out int ID))
+                {
+                    NewID = ID;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return NewID;
+        }
         public static DataTable GetAllDrivers()
         {
             DataTable DTAllDrivers = new DataTable();

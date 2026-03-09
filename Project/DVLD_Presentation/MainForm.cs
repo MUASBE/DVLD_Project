@@ -9,8 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLD_Business;
 using DVLD_Presentation.Applications;
+using DVLD_Presentation.Applications.International_Licenses;
 using DVLD_Presentation.Applications.Renew_LDL;
 using DVLD_Presentation.Drivers;
+using DVLD_Presentation.License.International_Licenses;
 
 namespace DVLD_Presentation
 {
@@ -95,6 +97,18 @@ namespace DVLD_Presentation
         private void StripMenuDrivers_Click(object sender, EventArgs e)
         {
             DriverList frm = new DriverList();
+            frm.ShowDialog();
+        }
+
+        private void internationalDribingLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddNewInternationalLicense frm = new AddNewInternationalLicense();
+            frm.ShowDialog();
+        }
+
+        private void internationalApplicationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InternationalLicensesList frm = new InternationalLicensesList();
             frm.ShowDialog();
         }
     }

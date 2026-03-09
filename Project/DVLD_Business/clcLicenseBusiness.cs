@@ -291,7 +291,56 @@ namespace DVLD_Business
 
             return NewLicesne;
         }
+        public clcInternationalLicenseBusiness IssueInternationalLicense(int CreatedUserID)
+        {
 
+            if (!this.IsActive || this.isLicenseExpirated() ||
+                clcInternationalLicenseBusiness.isInternationalLicenseExist(this.LicenseID) || this.LicenseClassesInfo.LicenseID != 3)
+                return null;
+
+            clcApplicationBusiness NewApplicationInfo = new clcApplicationBusiness();
+            NewApplicationInfo.ApplicationDate = DateTime.Now;
+            NewApplicationInfo.LastStatusDate = DateTime.Now;
+            NewApplicationInfo.GreatedUserID = CreatedUserID;
+            NewApplicationInfo.GreatedUserInfo = clcUsersBusiness.FindByUserID(CreatedUserID);
+            NewApplicationInfo.ApplicantPersonID = this.ApplicationInfo.ApplicantPersonID;
+            NewApplicationInfo.ApplicantPersonInfo = clcPersonBusiness.Find(NewApplicationInfo.ApplicantPersonID);
+            NewApplicationInfo.ApplicationStatus = clcApplicationBusiness._enStatus.New;
+
+            NewApplicationInfo.ApplicationTypeID = (int)clcApplicationBusiness.enApplicationType.NewInternationalLicense;
+            NewApplicationInfo.ApplicationTypeInfo = clcApplicationTypesBusiness.Find(NewApplicationInfo.ApplicationTypeID);
+            NewApplicationInfo.PaidFees = NewApplicationInfo.ApplicationTypeInfo.ApplicatinTypeFees;
+
+            if (!NewApplicationInfo.Save())
+                return null;
+
+            clcInternationalLicenseBusiness newInternationalLicense = new clcInternationalLicenseBusiness();
+
+
+            newInternationalLicense.ApplicationID = NewApplicationInfo.ApplicationID;
+            newInternationalLicense.ApplicationInfo = clcApplicationBusiness.Find(newInternationalLicense.ApplicationID);
+
+            newInternationalLicense.DriverID = this.DriverInfo.DriverID;
+            newInternationalLicense.DriverInfo = clcDriverBusiness.FindByDriverID(newInternationalLicense.DriverID);
+
+            newInternationalLicense.IssuedUsingLocalLicenseID = this.LicenseID;
+            newInternationalLicense.LicenseInfo = clcLicenseBusiness.Find(newInternationalLicense.IssuedUsingLocalLicenseID);
+
+            newInternationalLicense.IssueDate = DateTime.Now;
+            newInternationalLicense.ExpirationDate = DateTime.Now.AddYears(1);
+
+            newInternationalLicense.IsActive = true;
+
+            newInternationalLicense.CreatedByUserID = CreatedUserID;
+            newInternationalLicense.CreatedByUserInfo = clcUsersBusiness.FindByUserID(newInternationalLicense.CreatedByUserID);
+
+            if(!newInternationalLicense.IssueInternationalLicense())
+                return null;
+
+            NewApplicationInfo.CompleteApplication();
+
+            return newInternationalLicense;
+        }
         public static DataTable GetDriverLicense(int DriverID)
         {
             return clcLicenseData.GetDriverLicense(DriverID);

@@ -1,4 +1,5 @@
 ﻿using DVLD_Business;
+using DVLD_Presentation.License;
 using DVLD_Presentation.License.Local_License;
 using System;
 using System.Collections.Generic;
@@ -37,6 +38,7 @@ namespace DVLD_Presentation.Applications.Renew_LDL
             btnRenewLicense.Enabled = false;
             llShowLicenseInfo.Enabled = false;
             txtNotes.Enabled = false;
+            llShowLicenseHistory.Enabled = ctrlDriverLicenseInfoWithFilter1.LicenseInfo != null;
         }
 
         public RenewLDL()
@@ -60,7 +62,7 @@ namespace DVLD_Presentation.Applications.Renew_LDL
                 return;
             }
 
-            if(!ctrlDriverLicenseInfoWithFilter1.LicenseInfo.IsActive)
+            if (!ctrlDriverLicenseInfoWithFilter1.LicenseInfo.IsActive)
             {
                 MessageBox.Show("Seleted license is not active", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 _SetDefaultView();
@@ -78,6 +80,8 @@ namespace DVLD_Presentation.Applications.Renew_LDL
                 btnRenewLicense.Enabled = true;
                 txtNotes.Enabled = true;
             }
+
+            llShowLicenseHistory.Enabled = ctrlDriverLicenseInfoWithFilter1.LicenseInfo != null;
 
             lblLicenseFees.Text = ctrlDriverLicenseInfoWithFilter1.LicenseInfo.PaidFees.ToString();
             txtNotes.Text = ctrlDriverLicenseInfoWithFilter1.LicenseInfo.Notes;
@@ -136,6 +140,12 @@ namespace DVLD_Presentation.Applications.Renew_LDL
         private void llShowLicenseInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             ShowLicenseInfo frm = new ShowLicenseInfo(_NewLicenseID);
+            frm.ShowDialog();
+        }
+
+        private void llShowLicenseHistory_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            LicensesHistory frm = new LicensesHistory(ctrlDriverLicenseInfoWithFilter1.LicenseInfo.ApplicationInfo.ApplicantPersonID);
             frm.ShowDialog();
         }
     }

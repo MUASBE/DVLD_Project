@@ -115,7 +115,7 @@
             // 
             this.localDrivingLicenseToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("localDrivingLicenseToolStripMenuItem.Image")));
             this.localDrivingLicenseToolStripMenuItem.Name = "localDrivingLicenseToolStripMenuItem";
-            this.localDrivingLicenseToolStripMenuItem.Size = new System.Drawing.Size(647, 86);
+            this.localDrivingLicenseToolStripMenuItem.Size = new System.Drawing.Size(643, 86);
             this.localDrivingLicenseToolStripMenuItem.Text = "Local Driving License";
             this.localDrivingLicenseToolStripMenuItem.Click += new System.EventHandler(this.localDrivingLicenseToolStripMenuItem_Click);
             // 
@@ -123,8 +123,9 @@
             // 
             this.internationalDribingLicenseToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("internationalDribingLicenseToolStripMenuItem.Image")));
             this.internationalDribingLicenseToolStripMenuItem.Name = "internationalDribingLicenseToolStripMenuItem";
-            this.internationalDribingLicenseToolStripMenuItem.Size = new System.Drawing.Size(647, 86);
-            this.internationalDribingLicenseToolStripMenuItem.Text = "International Dribing License ";
+            this.internationalDribingLicenseToolStripMenuItem.Size = new System.Drawing.Size(643, 86);
+            this.internationalDribingLicenseToolStripMenuItem.Text = "International Driving License ";
+            this.internationalDribingLicenseToolStripMenuItem.Click += new System.EventHandler(this.internationalDribingLicenseToolStripMenuItem_Click);
             // 
             // renewDrivingLicenseToolStripMenuItem
             // 
@@ -172,6 +173,7 @@
             this.internationalApplicationToolStripMenuItem.Name = "internationalApplicationToolStripMenuItem";
             this.internationalApplicationToolStripMenuItem.Size = new System.Drawing.Size(574, 86);
             this.internationalApplicationToolStripMenuItem.Text = "International Application";
+            this.internationalApplicationToolStripMenuItem.Click += new System.EventHandler(this.internationalApplicationToolStripMenuItem_Click);
             // 
             // detainLicensesToolStripMenuItem
             // 

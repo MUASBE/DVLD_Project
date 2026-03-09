@@ -45,6 +45,7 @@
     <Compile Include="clcApplicationTypesData.cs" />
     <Compile Include="clcCountryData.cs" />
     <Compile Include="clcDriverData.cs" />
+    <Compile Include="clcInternationalLicenseData.cs" />
     <Compile Include="clcLicenseClassesData.cs" />
     <Compile Include="clcLicenseData.cs" />
     <Compile Include="clcPersonData.cs" />

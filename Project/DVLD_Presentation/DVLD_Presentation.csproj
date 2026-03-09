@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Applications\International_Licenses\AddNewInternationalLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\International_Licenses\AddNewInternationalLicense.Designer.cs">
+      <DependentUpon>AddNewInternationalLicense.cs</DependentUpon>
+    </Compile>
     <Compile Include="Applications\Renew_LDL\RenewLDL.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +69,24 @@
     </Compile>
     <Compile Include="Drivers\DriverList.Designer.cs">
       <DependentUpon>DriverList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Applications\International_Licenses\InternationalLicensesList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\International_Licenses\InternationalLicensesList.Designer.cs">
+      <DependentUpon>InternationalLicensesList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="License\International_license\Control\ctrlShowInternationalLicenseInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="License\International_license\Control\ctrlShowInternationalLicenseInfo.Designer.cs">
+      <DependentUpon>ctrlShowInternationalLicenseInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="License\International_license\showInternationalLicenseInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="License\International_license\showInternationalLicenseInfo.Designer.cs">
+      <DependentUpon>showInternationalLicenseInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="License\LicensesHistory.cs">
       <SubType>Form</SubType>
@@ -267,6 +291,9 @@
       <DependentUpon>ShowPersonInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="GlobalClasses\clcValidating.cs" />
+    <EmbeddedResource Include="Applications\International_Licenses\AddNewInternationalLicense.resx">
+      <DependentUpon>AddNewInternationalLicense.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Applications\Renew_LDL\RenewLDL.resx">
       <DependentUpon>RenewLDL.cs</DependentUpon>
     </EmbeddedResource>
@@ -275,6 +302,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Drivers\DriverList.resx">
       <DependentUpon>DriverList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applications\International_Licenses\InternationalLicensesList.resx">
+      <DependentUpon>InternationalLicensesList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="License\International_license\Control\ctrlShowInternationalLicenseInfo.resx">
+      <DependentUpon>ctrlShowInternationalLicenseInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="License\International_license\showInternationalLicenseInfo.resx">
+      <DependentUpon>showInternationalLicenseInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="License\LicensesHistory.resx">
       <DependentUpon>LicensesHistory.cs</DependentUpon>

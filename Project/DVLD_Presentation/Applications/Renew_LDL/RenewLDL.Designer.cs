@@ -117,6 +117,7 @@
             this.llShowLicenseHistory.TabIndex = 186;
             this.llShowLicenseHistory.TabStop = true;
             this.llShowLicenseHistory.Text = "Show Licenses History";
+            this.llShowLicenseHistory.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llShowLicenseHistory_LinkClicked);
             // 
             // btnRenewLicense
             // 

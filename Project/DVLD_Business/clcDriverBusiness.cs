@@ -92,5 +92,9 @@ namespace DVLD_Business
             return clcDriverData.GetAllDrivers();
         }
 
+        public static int GetPersonIDByDriverID(int DriverID)
+        {
+            return clcDriverData.GetPersonIDByDriverID(DriverID);
+        }
     }
 }

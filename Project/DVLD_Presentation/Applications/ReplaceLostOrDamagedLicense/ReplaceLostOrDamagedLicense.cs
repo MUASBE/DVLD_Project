@@ -1,4 +1,5 @@
 ﻿using DVLD_Business;
+using DVLD_Presentation.License;
 using DVLD_Presentation.License.Local_License;
 using System;
 using System.Collections.Generic;
@@ -24,8 +25,9 @@ namespace DVLD_Presentation.Applications
             ctrlDriverLicenseInfoWithFilter1.EnableFilter = true; 
             llShowLicenseInfo.Enabled = false;
             btnIssueReplacement.Enabled = false;
+            llShowLicenseHistory.Enabled = ctrlDriverLicenseInfoWithFilter1.LicenseInfo != null;
 
-             IssueReason = enIssueReason.ReplacementForLost;
+            IssueReason = enIssueReason.ReplacementForLost;
              ApplicationType = enApplicationType.ReplaceLostDrivingLicense;
 
             rbLostLicense.Checked = true;
@@ -74,6 +76,7 @@ namespace DVLD_Presentation.Applications
                 return;
             }
             btnIssueReplacement.Enabled = true;
+            llShowLicenseHistory.Enabled = ctrlDriverLicenseInfoWithFilter1.LicenseInfo != null;
 
 
         }
@@ -139,6 +142,12 @@ namespace DVLD_Presentation.Applications
         private void llShowLicenseInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             ShowLicenseInfo frm = new ShowLicenseInfo(_NewRelpacemntLicenseID);
+            frm.ShowDialog();
+        }
+
+        private void llShowLicenseHistory_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            LicensesHistory frm = new LicensesHistory(ctrlDriverLicenseInfoWithFilter1.LicenseInfo.ApplicationInfo.ApplicantPersonID);
             frm.ShowDialog();
         }
     }

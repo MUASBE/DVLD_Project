@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,7 +55,39 @@ namespace DVLD_Presentation.License.License_Controls
         }
         private void LoadInternationalDriverLicenses()
         {
-            //dgvInternationalLicensesHistory;
+            DtInternationalDriverLicenses = clcInternationalLicenseBusiness.GetInternationalLicensesByDriverID(_DriverID);
+            dgvInternationalLicensesHistory.DataSource = DtInternationalDriverLicenses;
+
+            if (dgvInternationalLicensesHistory.ColumnCount > 0)
+            {
+
+                dgvInternationalLicensesHistory.Columns[0].HeaderText = "int.License ID";
+                dgvInternationalLicensesHistory.Columns[0].Width = 120;
+
+                dgvInternationalLicensesHistory.Columns[1].HeaderText = "App ID.";
+                dgvInternationalLicensesHistory.Columns[1].Width = 120;
+
+                dgvInternationalLicensesHistory.Columns[2].HeaderText = "l.license ID";
+                dgvInternationalLicensesHistory.Columns[2].Width = 120;
+
+                dgvInternationalLicensesHistory.Columns[3].HeaderText = "Issue Date";
+                dgvInternationalLicensesHistory.Columns[3].Width = 150;
+
+                dgvInternationalLicensesHistory.Columns[4].HeaderText = "Expiration Date";
+                dgvInternationalLicensesHistory.Columns[4].Width = 150;
+
+                dgvInternationalLicensesHistory.Columns[5].HeaderText = "Is Active";
+                dgvInternationalLicensesHistory.Columns[5].Width = 100;
+
+                InternationalLicenseHistorytoolStripMenuItem.Enabled = true;
+            }
+            else
+            {
+                InternationalLicenseHistorytoolStripMenuItem.Enabled = false;
+            }
+
+            lblInternationalLicensesRecords.Text = DtInternationalDriverLicenses.DefaultView.Count.ToString();
+
         }
         public ctrlDriverLicenses()
         {
