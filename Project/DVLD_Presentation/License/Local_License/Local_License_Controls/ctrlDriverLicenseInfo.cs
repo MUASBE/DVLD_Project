@@ -163,7 +163,7 @@ namespace DVLD_Presentation.License.Local_License.Local_License_Controls
             lblIssueReason.Text = _LicenseInfo.IssueReasonText;
             lblNotes.Text = _LicenseInfo.Notes == "" ? "No Notes" : _LicenseInfo.Notes;
 
-
+            lblIsDetained.Text = (_LicenseInfo.IsLicenseDetain) ? "Yes" : "No";
 
 
         }

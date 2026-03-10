@@ -33,7 +33,10 @@ namespace DVLD_Business
         public string Notes { get; set; }
         public float PaidFees { get; set; }
         public bool IsActive { get; set; }
-
+        public bool IsLicenseDetain
+        {
+            get { return clcDetainLicensesBusiness.IsLicenseDetain(this.LicenseID);}
+        }
         public int CreatedByUserID { get; set; }
         public clcUsersBusiness CreatedByUserInfo;
 
@@ -291,6 +294,34 @@ namespace DVLD_Business
 
             return NewLicesne;
         }
+        
+        public int DetainLicense(DateTime DetainDate, float FineFees, int CreatedByUserID)
+        {
+            if(IsLicenseDetain || !IsActive)
+            {
+                return 0;
+            }
+
+            clcDetainLicensesBusiness DetainLicenseInfo = new clcDetainLicensesBusiness();
+            
+            DetainLicenseInfo.LicenseID = this.LicenseID;
+            DetainLicenseInfo.LicenseInfo = clcLicenseBusiness.Find(this.LicenseID);
+
+            DetainLicenseInfo.DetainDate = DetainDate;
+            DetainLicenseInfo.FineFees = FineFees;
+            DetainLicenseInfo.IsReleased = false;
+
+            DetainLicenseInfo.CreatedByUserID = CreatedByUserID;
+            DetainLicenseInfo.CreatedUserInfo = clcUsersBusiness.FindByUserID(CreatedByUserID);
+
+            if(!DetainLicenseInfo.DetainLicense())
+                return 0;
+
+            int DetainID = DetainLicenseInfo.DetainID;
+
+            return DetainID;
+        }
+
         public clcInternationalLicenseBusiness IssueInternationalLicense(int CreatedUserID)
         {
 

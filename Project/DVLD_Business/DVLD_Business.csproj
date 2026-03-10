@@ -44,6 +44,7 @@
     <Compile Include="clcApplicationBusiness.cs" />
     <Compile Include="clcApplicationTypesBusiness.cs" />
     <Compile Include="clcCountryBusiness.cs" />
+    <Compile Include="clcDetainLicensesBusiness.cs" />
     <Compile Include="clcDriverBusiness.cs" />
     <Compile Include="clcInternationalLicenseBusiness.cs" />
     <Compile Include="clcLDLApplicationBusiness.cs" />

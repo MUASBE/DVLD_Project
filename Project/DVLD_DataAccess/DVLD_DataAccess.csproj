@@ -55,6 +55,7 @@
     <Compile Include="clcTestTypeData.cs" />
     <Compile Include="clcUserData.cs" />
     <Compile Include="clcLDLApplicationData.cs" />
+    <Compile Include="clcDetainLicenseData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -12,6 +12,7 @@ using DVLD_Presentation.Applications;
 using DVLD_Presentation.Applications.International_Licenses;
 using DVLD_Presentation.Applications.Renew_LDL;
 using DVLD_Presentation.Drivers;
+using DVLD_Presentation.License.Detain_license;
 using DVLD_Presentation.License.International_Licenses;
 
 namespace DVLD_Presentation
@@ -109,6 +110,12 @@ namespace DVLD_Presentation
         private void internationalApplicationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             InternationalLicensesList frm = new InternationalLicensesList();
+            frm.ShowDialog();
+        }
+
+        private void detainLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DetainLicense frm = new DetainLicense();
             frm.ShowDialog();
         }
     }

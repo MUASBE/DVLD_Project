@@ -29,7 +29,13 @@ namespace DVLD_Presentation.License.Local_License.Local_License_Controls
             InitializeComponent();
             txtLicenseID.Focus();
         }
-        
+        public void LoadLicenseDataAgain()
+        {
+            if (_LicenseID != 0)
+            {
+                ctrlDriverLicenseInfo1.LoadInfo(_LicenseID);
+            }
+        }
         public clcLicenseBusiness LicenseInfo
         {
             get
