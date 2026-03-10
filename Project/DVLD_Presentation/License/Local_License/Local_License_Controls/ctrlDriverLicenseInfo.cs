@@ -41,6 +41,7 @@ namespace DVLD_Presentation.License.Local_License.Local_License_Controls
             lblNotes.Text = "????";
 
             lblIsActive.Text = "????";
+            lblIsDetained.Text = "????";
             lblDateOfBirth.Text = "????";
             lblDriverID.Text = "????";
             lblExpirationDate.Text = "????";

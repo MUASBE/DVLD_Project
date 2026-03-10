@@ -52,6 +52,12 @@
     <Compile Include="Applications\International_Licenses\AddNewInternationalLicense.Designer.cs">
       <DependentUpon>AddNewInternationalLicense.cs</DependentUpon>
     </Compile>
+    <Compile Include="Applications\Release_Detained_Licenses\ReleaseDetainedLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\Release_Detained_Licenses\ReleaseDetainedLicense.Designer.cs">
+      <DependentUpon>ReleaseDetainedLicense.cs</DependentUpon>
+    </Compile>
     <Compile Include="Applications\Renew_LDL\RenewLDL.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -300,6 +306,9 @@
     <EmbeddedResource Include="Applications\International_Licenses\AddNewInternationalLicense.resx">
       <DependentUpon>AddNewInternationalLicense.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Applications\Release_Detained_Licenses\ReleaseDetainedLicense.resx">
+      <DependentUpon>ReleaseDetainedLicense.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Applications\Renew_LDL\RenewLDL.resx">
       <DependentUpon>RenewLDL.cs</DependentUpon>
     </EmbeddedResource>
@@ -464,8 +473,6 @@
   <ItemGroup>
     <None Include="Resources\Vision Test 32.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Applications\Release_Detained_Licenses\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

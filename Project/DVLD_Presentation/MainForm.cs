@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using DVLD_Business;
 using DVLD_Presentation.Applications;
 using DVLD_Presentation.Applications.International_Licenses;
+using DVLD_Presentation.Applications.Release_Detained_Licenses;
 using DVLD_Presentation.Applications.Renew_LDL;
 using DVLD_Presentation.Drivers;
 using DVLD_Presentation.License.Detain_license;
@@ -116,6 +117,12 @@ namespace DVLD_Presentation
         private void detainLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DetainLicense frm = new DetainLicense();
+            frm.ShowDialog();
+        }
+
+        private void releaseDetainedLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReleaseDetainedLicense frm = new ReleaseDetainedLicense();
             frm.ShowDialog();
         }
     }

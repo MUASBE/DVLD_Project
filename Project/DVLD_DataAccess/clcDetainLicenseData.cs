@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -32,7 +33,7 @@ namespace DVLD_DataAccess
                     LicenseID = (int)reader["LicenseID"];
                     CreatedByUserID = (int)reader["CreatedByUserID"];
 
-                    if (reader["ReleasedByUserID"] != null)
+                    if (reader["ReleasedByUserID"] != DBNull.Value)
                     {
                         ReleasedByUserID = (int)reader["ReleasedByUserID"];
                     }
@@ -40,7 +41,7 @@ namespace DVLD_DataAccess
                     {
                         ReleasedByUserID = -1;
                     }
-                    if (reader["ReleaseApplicationID"] != null)
+                    if (reader["ReleaseApplicationID"] != DBNull.Value)
                     {
                         ReleaseApplicationID = (int)reader["ReleaseApplicationID"];
                     }
@@ -51,7 +52,7 @@ namespace DVLD_DataAccess
 
                     DetainDate = (DateTime)reader["DetainDate"];
 
-                    if (reader["ReleaseDate"] != null)
+                    if (reader["ReleaseDate"] != DBNull.Value)
                     {
                         ReleaseDate = (DateTime)reader["ReleaseDate"];
                     }
@@ -60,7 +61,7 @@ namespace DVLD_DataAccess
                         ReleaseDate = DateTime.MinValue;
                     }
                         FineFees = Convert.ToSingle(reader["FineFees"]);
-                    IsReleased = Convert.ToBoolean(reader["IsActive"]);
+                    IsReleased = Convert.ToBoolean(reader["IsReleased"]);
 
                     isFound = true;
                 }
@@ -97,7 +98,7 @@ namespace DVLD_DataAccess
                     DetainID = (int)reader["DetainID"];
                     CreatedByUserID = (int)reader["CreatedByUserID"];
 
-                    if (reader["ReleasedByUserID"] != null)
+                    if (reader["ReleasedByUserID"] != DBNull.Value)
                     {
                         ReleasedByUserID = (int)reader["ReleasedByUserID"];
                     }
@@ -105,7 +106,7 @@ namespace DVLD_DataAccess
                     {
                         ReleasedByUserID = -1;
                     }
-                    if (reader["ReleaseApplicationID"] != null)
+                    if (reader["ReleaseApplicationID"] != DBNull.Value)
                     {
                         ReleaseApplicationID = (int)reader["ReleaseApplicationID"];
                     }
@@ -116,7 +117,7 @@ namespace DVLD_DataAccess
 
                     DetainDate = (DateTime)reader["DetainDate"];
 
-                    if (reader["ReleaseDate"] != null)
+                    if (reader["ReleaseDate"] != DBNull.Value)
                     {
                         ReleaseDate = (DateTime)reader["ReleaseDate"];
                     }
@@ -125,7 +126,7 @@ namespace DVLD_DataAccess
                         ReleaseDate = DateTime.MinValue;
                     }
                     FineFees = Convert.ToSingle(reader["FineFees"]);
-                    IsReleased = Convert.ToBoolean(reader["IsActive"]);
+                    IsReleased = Convert.ToBoolean(reader["IsReleased"]);
 
                     isFound = true;
                 }
@@ -361,5 +362,35 @@ namespace DVLD_DataAccess
             return dt;
 
         }
+
+        public static float GetFineFeesForDetainedLicense(int licenseID)
+        {
+            float FineFees = 0;
+
+            SqlConnection connection = new SqlConnection(clcSetting.connectionString);
+            string Query = @"select FineFees from DetainedLicenses where LicenseID = @licenseID and IsReleased = 0";
+
+            SqlCommand command = new SqlCommand(Query, connection);
+            command.Parameters.AddWithValue("@licenseID", licenseID);
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null )
+                {
+                    FineFees = Convert.ToSingle(result.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            { connection.Close(); }
+
+            return FineFees;
+        }
+
     }
 }

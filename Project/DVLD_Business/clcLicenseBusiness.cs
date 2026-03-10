@@ -37,6 +37,12 @@ namespace DVLD_Business
         {
             get { return clcDetainLicensesBusiness.IsLicenseDetain(this.LicenseID);}
         }
+
+        public float GetFineFeesForDetainedLicense
+        {
+            get { return clcDetainLicenseData.GetFineFeesForDetainedLicense(this.LicenseID); }
+        }
+
         public int CreatedByUserID { get; set; }
         public clcUsersBusiness CreatedByUserInfo;
 
@@ -321,7 +327,46 @@ namespace DVLD_Business
 
             return DetainID;
         }
+        public int ReleaseDetainedLicense(int DetainID, int ReleaseByUserID)
+        {
+            if(!(IsLicenseDetain && IsActive))
+            {
+                return 0;
+            }
 
+            clcDetainLicensesBusiness DetainLicenseInfo = clcDetainLicensesBusiness.findByDetainID(DetainID);
+            if(DetainLicenseInfo == null)
+                { return 0; }
+
+            clcApplicationBusiness NewApplicationInfo = new clcApplicationBusiness();
+            NewApplicationInfo.ApplicationDate = DateTime.Now;
+            NewApplicationInfo.LastStatusDate = DateTime.Now;
+            NewApplicationInfo.GreatedUserID = ReleaseByUserID;
+            NewApplicationInfo.GreatedUserInfo = clcUsersBusiness.FindByUserID(ReleaseByUserID);
+            NewApplicationInfo.ApplicantPersonID = this.ApplicationInfo.ApplicantPersonID;
+            NewApplicationInfo.ApplicantPersonInfo = clcPersonBusiness.Find(NewApplicationInfo.ApplicantPersonID);
+            NewApplicationInfo.ApplicationStatus = clcApplicationBusiness._enStatus.New;
+
+            NewApplicationInfo.ApplicationTypeID = (int)clcApplicationBusiness.enApplicationType.ReleaseDetainedDrivingLicsense;
+            NewApplicationInfo.ApplicationTypeInfo = clcApplicationTypesBusiness.Find(NewApplicationInfo.ApplicationTypeID);
+            NewApplicationInfo.PaidFees = NewApplicationInfo.ApplicationTypeInfo.ApplicatinTypeFees;
+
+            if (!NewApplicationInfo.Save())
+                return 0;
+
+            DetainLicenseInfo.ReleaseDate = DateTime.Now;
+            DetainLicenseInfo.ReleasedByUserID = ReleaseByUserID;
+            DetainLicenseInfo.ReleaseUserInfo = clcUsersBusiness.FindByUserID(ReleaseByUserID) ;
+            DetainLicenseInfo.ReleaseApplicationID = NewApplicationInfo.ApplicationID;
+            DetainLicenseInfo.ReleaseApplicationInfo = clcApplicationBusiness.Find(NewApplicationInfo.ApplicationID);
+
+            if(!DetainLicenseInfo.ReleaseDetainedLicense())
+                return 0;
+
+            NewApplicationInfo.CompleteApplication();
+
+            return NewApplicationInfo.ApplicationID;
+        }
         public clcInternationalLicenseBusiness IssueInternationalLicense(int CreatedUserID)
         {
 

@@ -27,7 +27,7 @@ namespace DVLD_Presentation.License.Detain_license
             lblCreatedByUser.Text = clcGlobal.GolbalUser.UserName;
 
             llShowLicenseHistory.Enabled = (ctrlDriverLicenseInfoWithFilter1.LicenseInfo != null);
-
+            btnIssueDetain.Enabled = false;
             ctrlDriverLicenseInfoWithFilter1.TabIndex = 0;
             ctrlDriverLicenseInfoWithFilter1.FoucestxtLicense();
         }
