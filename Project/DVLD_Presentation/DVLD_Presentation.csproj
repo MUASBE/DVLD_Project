@@ -52,6 +52,12 @@
     <Compile Include="Applications\International_Licenses\AddNewInternationalLicense.Designer.cs">
       <DependentUpon>AddNewInternationalLicense.cs</DependentUpon>
     </Compile>
+    <Compile Include="Applications\Release_Detained_Licenses\ManageDetainedLicenses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\Release_Detained_Licenses\ManageDetainedLicenses.Designer.cs">
+      <DependentUpon>ManageDetainedLicenses.cs</DependentUpon>
+    </Compile>
     <Compile Include="Applications\Release_Detained_Licenses\ReleaseDetainedLicense.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -305,6 +311,9 @@
     <Compile Include="GlobalClasses\clcValidating.cs" />
     <EmbeddedResource Include="Applications\International_Licenses\AddNewInternationalLicense.resx">
       <DependentUpon>AddNewInternationalLicense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applications\Release_Detained_Licenses\ManageDetainedLicenses.resx">
+      <DependentUpon>ManageDetainedLicenses.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\Release_Detained_Licenses\ReleaseDetainedLicense.resx">
       <DependentUpon>ReleaseDetainedLicense.cs</DependentUpon>

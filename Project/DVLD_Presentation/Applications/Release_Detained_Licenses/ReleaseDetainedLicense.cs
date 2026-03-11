@@ -16,6 +16,7 @@ namespace DVLD_Presentation.Applications.Release_Detained_Licenses
     public partial class ReleaseDetainedLicense : Form
     {
         private int _DetainID = 0;
+        private int _LicenseID = 0;
 
         private void _SetDefaultView()
         {
@@ -41,10 +42,24 @@ namespace DVLD_Presentation.Applications.Release_Detained_Licenses
         {
             InitializeComponent();
         }
-
+        public ReleaseDetainedLicense(int LicenseID)
+        {
+            InitializeComponent();
+            _LicenseID = LicenseID;
+        }
         private void ReleaseDetainedLicense_Load(object sender, EventArgs e)
         {
             _SetDefaultView();
+
+            if(_LicenseID > 0)
+            {
+                ctrlDriverLicenseInfoWithFilter1.PerformClickOnbtnFind(_LicenseID);
+
+                ctrlDriverLicenseInfoWithFilter1.EnableFilter = false;
+                ctrlDriverLicenseInfoWithFilter1.EnableBtnFind = false;
+
+            }
+
         }
 
         private void ctrlDriverLicenseInfoWithFilter1_OnLicenseClick(int obj)

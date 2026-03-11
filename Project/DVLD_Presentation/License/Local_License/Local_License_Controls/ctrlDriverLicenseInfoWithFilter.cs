@@ -36,6 +36,13 @@ namespace DVLD_Presentation.License.Local_License.Local_License_Controls
                 ctrlDriverLicenseInfo1.LoadInfo(_LicenseID);
             }
         }
+
+        public void PerformClickOnbtnFind(int LicenseID)
+        {
+            txtLicenseID.Text = LicenseID.ToString();
+            btnFind.PerformClick();
+        }
+
         public clcLicenseBusiness LicenseInfo
         {
             get
