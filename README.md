@@ -23,7 +23,7 @@ This project was built as part of a structured learning roadmap to apply real-wo
 </p>
 
 ### 🔹 System Management
-| ![Login](Screens/Login-Screen.png) | ![People](Screens/People-Screen.png) | ![Users](Screens/Users-Screen.png) |
+| ![Login](Project/DVLD_Screens/Login Screen.png) | ![People](Project/DVLD_Screens/people.png) | ![Users](Project/DVLD_Screens/Users.png) |
 |:---:|:---:|:---:|
 | **Login Screen** | **People Management** | **Users Management** |
 | ![Applications](Project/DVLD_Screens/local Driving Applications.png) | ![Tests](Project/DVLD_Screens/test appointment.png) | ![History](Project/DVLD_Screens/license history.png) |
@@ -35,7 +35,6 @@ This project was built as part of a structured learning roadmap to apply real-wo
   <p align="center">
     <img src="Project/DVLD_Screens/Detain and elease licenses.png" width="32%" alt="Detain & Release" />
     <img src="Project/DVLD_Screens/new local Driving license application.png" width="32%" alt="New License" />
-    <img src="Project/DVLD_Screens/Login Screen.png" width="32%" alt="Login" />
   </p>
    <p align="center">
   </p>
@@ -72,9 +71,9 @@ This project was built as part of a structured learning roadmap to apply real-wo
 - **Git Best Practices:** Clean and traceable feature-based commit history.
 
 ## ◈ 7. Installation and Setup
-
-1. **Database:** Restore `Database/DVLD-System-Database.bak` via SSMS.
-2. **Run:** Open the `.sln` file and press **F5**.
+1.   git clone https://github.com/MUASBE/DVLD_Project.git
+2. **Database:** Restore `Database/DVLD-System-Database.bak` via SSMS.
+3. **Run:** Open the `.sln` file and press **F5**.
 
 > **Note:** If the connection fails, update `Data Source` in `App.config` to match your SQL Server name (e.g., `.` or `.\SQLEXPRESS`).
 
