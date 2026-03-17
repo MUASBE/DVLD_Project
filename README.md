@@ -23,18 +23,20 @@ This project was built as part of a structured learning roadmap to apply real-wo
 </p>
 
 ### 🔹 System Management
-| ![Login](Project/DVLD_Screens/Login Screen.png) | ![People](Project/DVLD_Screens/people.png) | ![Users](Project/DVLD_Screens/Users.png) |
+| ![Login](Project/DVLD_Screens/Login_Screen.png) | ![People](Project/DVLD_Screens/people.png) | ![Users](Project/DVLD_Screens/Users.png) |
 |:---:|:---:|:---:|
 | **Login Screen** | **People Management** | **Users Management** |
-| ![Applications](Project/DVLD_Screens/local_Driving_Applications.png) | ![Tests](Project/DVLD_Screens/test_appointment.png) | ![History](Project/DVLD_Screens/license history.png) |
+| ![Applications](Project/DVLD_Screens/local_Driving_Applications.png) | ![Tests](Project/DVLD_Screens/test_appointment.png) | ![History](Project/DVLD_Screens/license_history.png) |
 | **Local Applications** | **Tests & Appointments** | **License History** |
 
 <details>
-  <summary><b>Click to view more screenshots (2+ more)</b></summary>
+  <summary><b>Click to view more screenshots (3+ more)</b></summary>
   <br>
   <p align="center">
-    <img src="Project/DVLD_Screens/Detain and elease licenses.png" width="32%" alt="Detain & Release" />
-    <img src="Project/DVLD_Screens/new local Driving license application.png" width="32%" alt="New License" />
+    <img src="Project/DVLD_Screens/Detain_and_release_licenses.png" width="32%" alt="Detain & Release" />
+    <img src="Project/DVLD_Screens/new_local_Driving_license_application.png" width="32%" alt="New License" />
+    <img src="Project/DVLD_Screens/Account_Setting.png" width="32%" alt="Account Setting" /> 
+    <img src="Project/DVLD_Screens/Driver.png" width="32%" alt="Drivers" />
   </p>
    <p align="center">
   </p>
