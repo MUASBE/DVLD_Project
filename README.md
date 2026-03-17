@@ -19,26 +19,25 @@ This project was built as part of a structured learning roadmap to apply real-wo
 
 ### 🔹 Applications Menu (Expanded)
 <p align="center">
-  <img src="Screens/Applications-Menu-Expanded.png" alt="Applications Menu">
+  <img src="Project/DVLD_Screens/Application.png" alt="Applications Menu">
 </p>
 
 ### 🔹 System Management
 | ![Login](Screens/Login-Screen.png) | ![People](Screens/People-Screen.png) | ![Users](Screens/Users-Screen.png) |
 |:---:|:---:|:---:|
 | **Login Screen** | **People Management** | **Users Management** |
-| ![Applications](Screens/Local-License-Applications.png) | ![Tests](Screens/Tests-and-Appointments.png) | ![History](Screens/License-History-Screen.png) |
+| ![Applications](Project/DVLD_Screens/local Driving Applications.png) | ![Tests](Project/DVLD_Screens/test appointment.png) | ![History](Project/DVLD_Screens/license history.png) |
 | **Local Applications** | **Tests & Appointments** | **License History** |
 
 <details>
   <summary><b>Click to view more screenshots (4+ more)</b></summary>
   <br>
   <p align="center">
-    <img src="Screens/Detained-Licenses-Screens.png" width="32%" alt="Detain & Release" />
-    <img src="Screens/New-Local-Driving-License.png" width="32%" alt="New License" />
-    <img src="Screens/Replacement.png" width="32%" alt="Replacement" />
+    <img src="Project/DVLD_Screens/Detain and elease licenses.png" width="32%" alt="Detain & Release" />
+    <img src="Project/DVLD_Screens/new local Driving license application.png" width="32%" alt="New License" />
+    <img src="Project/DVLD_Screens/Login Screen.png" width="32%" alt="Login" />
   </p>
    <p align="center">
-    <img src="Screens/Menu-Expanded.png" alt="Expanded Menu Overview" />
   </p>
 </details>
 
@@ -79,8 +78,3 @@ This project was built as part of a structured learning roadmap to apply real-wo
 
 > **Note:** If the connection fails, update `Data Source` in `App.config` to match your SQL Server name (e.g., `.` or `.\SQLEXPRESS`).
 
-## ◈ 8. Skills & Learnings
-
-For more details on skills gained during this project, see: [DVLD_SKILLS.md](DVLD_SKILLS.md)
-
-> This project represents a major milestone in my transition from Civil Engineering to Software Development.
