@@ -26,7 +26,7 @@ This project was built as part of a structured learning roadmap to apply real-wo
 | ![Login](Project/DVLD_Screens/Login Screen.png) | ![People](Project/DVLD_Screens/people.png) | ![Users](Project/DVLD_Screens/Users.png) |
 |:---:|:---:|:---:|
 | **Login Screen** | **People Management** | **Users Management** |
-| ![Applications](Project/DVLD_Screens/local_Driving_Applications.png) | ![Tests](Project/DVLD_Screens/test_appointment.png) | ![History](Project/DVLD_Screens/license_history.png) |
+| ![Applications](Project/DVLD_Screens/local_Driving_Applications.png) | ![Tests](Project/DVLD_Screens/test_appointment.png) | ![History](Project/DVLD_Screens/license history.png) |
 | **Local Applications** | **Tests & Appointments** | **License History** |
 
 <details>
