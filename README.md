@@ -14,7 +14,7 @@ This project was built as part of a structured learning roadmap to apply real-wo
 
 ### 🔹 Main Interface
 <p align="center">
-  <img src="DVLD_Screens/screen.png" width="85%" alt="Main Interface">
+  <img src="Project/DVLD_Screens/screen.png" width="85%" alt="Screen">
 </p>
 
 ### 🔹 Applications Menu (Expanded)
