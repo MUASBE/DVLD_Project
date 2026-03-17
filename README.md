@@ -30,7 +30,7 @@ This project was built as part of a structured learning roadmap to apply real-wo
 | **Local Applications** | **Tests & Appointments** | **License History** |
 
 <details>
-  <summary><b>Click to view more screenshots (3+ more)</b></summary>
+  <summary><b>Click to view more screenshots (4+ more)</b></summary>
   <br>
   <p align="center">
     <img src="Project/DVLD_Screens/Detain_and_release_licenses.png" width="32%" alt="Detain & Release" />
