@@ -25,7 +25,7 @@ namespace DVLD_Presentation
                 handler(LDLApplicationID); // Raise the event with the parameter
             }
         }
-
+        private int _licenseID = 0;
         private int _LDLApplicationID;
         private clcLDLApplicationBusiness _LDLApplication;
         public int LDLApplicationID
@@ -85,7 +85,11 @@ namespace DVLD_Presentation
 
         private void LinklblShowLicenseInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            ShowLicenseInfo frm = new ShowLicenseInfo(_LDLApplication.ApplicationID);
+            if (_LDLApplication == null)
+                return;
+
+            _licenseID = clcLicenseBusiness.GetLicenseByPersonID(_LDLApplication.ApplicationInfo.ApplicantPersonID, _LDLApplication.LicenseInfo.LicenseID);
+            ShowLicenseInfo frm = new ShowLicenseInfo(_licenseID);
             frm.ShowDialog();
         }
     }
