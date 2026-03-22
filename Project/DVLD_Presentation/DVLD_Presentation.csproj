@@ -482,6 +482,11 @@
   <ItemGroup>
     <None Include="Resources\Vision Test 32.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\visable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\visibility-off.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

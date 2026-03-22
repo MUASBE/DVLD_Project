@@ -155,7 +155,7 @@ namespace DVLD_Presentation
                 default:
                     {
                         DTLDLApplications.DefaultView.RowFilter = "";
-                        break;
+                        return;
                     }
             }
 

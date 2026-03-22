@@ -103,7 +103,7 @@ namespace DVLD_Presentation.License.License_Controls
 
             if(_DriverID <= 0)
             {
-                MessageBox.Show("There is no driver linked with this person", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show("There is no driver linked with this person", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

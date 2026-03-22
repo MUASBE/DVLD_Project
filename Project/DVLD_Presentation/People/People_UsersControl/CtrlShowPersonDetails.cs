@@ -103,17 +103,18 @@ namespace DVLD_Presentation
                 lblEmail.Text = Person.Email;
                 lblPhone.Text = Person.Phone;
                 lblDateOfBirth.Text = Person.DateOfBirth.ToShortDateString();
-                lblGendor.Text = Person.Gendor.ToString();
                 lblAddress.Text = Person.Address;
                 lblCountry.Text = Person.CountryInfo.CountryName;
 
                 if (Person.Gendor == 1)
                 {
                     pbPerson.Image = Properties.Resources.Female_512;
+                    lblGendor.Text = "Female";
                 }
                 else
                 {
                     pbPerson.Image = Properties.Resources.Male_512;
+                    lblGendor.Text = "Male";
                 }
 
                 // Load image

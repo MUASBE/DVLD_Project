@@ -56,7 +56,7 @@ namespace DVLD_Presentation.License
         {
             _PersonID = obj;
 
-            if(_PersonID != -1)
+            if(_PersonID > 0)
             {
                 ctrlShowPersonDetailsWithFilter1.LoadPersonInfo(_PersonID);
                 if (ctrlShowPersonDetailsWithFilter1.PersonInfo == null)

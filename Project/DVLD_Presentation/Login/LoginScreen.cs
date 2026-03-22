@@ -1,10 +1,12 @@
 ﻿using DVLD_Business;
+using DVLD_Presentation.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Versioning;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -75,6 +77,38 @@ namespace DVLD_Presentation
                 chkRememberMe.Checked = false;
             }
 
+            //if(!string.IsNullOrEmpty(txtPassword.Text))
+            //{
+            //    txtPassword.PasswordChar = '*';
+            //    btnVisibility.Visible = true;
+            //    btnVisibility.Image = Resources.visibility_off;
+                
+
+            //}
+            //else
+            //{
+            //    btnVisibility.Visible = false;
+            //}
+        }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+            btnVisibility.Visible = true;
+            btnVisibility.Image = (txtPassword.PasswordChar == '*')?  Resources.visibility_off : Resources.visable;
+        }
+
+        private void btnVisibility_Click(object sender, EventArgs e)
+        {
+            if(txtPassword.PasswordChar == '*')
+            {
+                txtPassword.PasswordChar = txtUserName.PasswordChar;
+                btnVisibility.Image = Resources.visable;
+            }
+            else
+            {
+                txtPassword.PasswordChar = '*';
+                btnVisibility.Image = Resources.visibility_off;
+            }
         }
     }
 }

@@ -131,5 +131,11 @@ namespace DVLD_Presentation
             ManageDetainedLicenses frm = new ManageDetainedLicenses();
             frm.ShowDialog();
         }
+
+        private void retakeTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LDLApplicationList frmLDLApplicationList = new LDLApplicationList();
+            frmLDLApplicationList.ShowDialog();
+        }
     }
 }
